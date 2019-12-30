@@ -21,8 +21,7 @@ public class LogAspects {
 	// 1、本类引用
 	// 2、其他的切面引用
 	@Pointcut("execution(public int com.atguigu.aop.MathCalculator.*(..))")
-	public void pointCut() {
-	};
+	public void pointCut() {}
 
 	// @Before在目标方法之前切入；切入点表达式（指定在哪个方法切入）
 	@Before("pointCut()")

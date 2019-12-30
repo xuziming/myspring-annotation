@@ -47,34 +47,25 @@ import com.atguigu.dao.BookDao;
  * 		把Spring底层一些组件注入到自定义的Bean中；
  * 		xxxAware：功能使用xxxProcessor；
  * 			ApplicationContextAware==》ApplicationContextAwareProcessor；
- * 	
- * 		
- * @author lfy
- *
  */
 @Configuration
-@ComponentScan({"com.atguigu.service","com.atguigu.dao",
-	"com.atguigu.controller","com.atguigu.bean"})
+@ComponentScan({ "com.atguigu.service", "com.atguigu.dao", "com.atguigu.controller", "com.atguigu.bean" })
 public class MainConifgOfAutowired {
-	
+
 	@Primary
 	@Bean("bookDao2")
-	public BookDao bookDao(){
+	public BookDao bookDao() {
 		BookDao bookDao = new BookDao();
 		bookDao.setLable("2");
 		return bookDao;
 	}
-	
-	/**
-	 * @Bean标注的方法创建对象的时候，方法参数的值从容器中获取
-	 * @param car
-	 * @return
-	 */
+
+	/** @Bean标注的方法创建对象的时候，方法参数的值从容器中获取 */
 	@Bean
-	public Color color(Car car){
+	public Color color(Car car) {
 		Color color = new Color();
 		color.setCar(car);
 		return color;
 	}
-	
+
 }

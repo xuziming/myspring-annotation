@@ -14,7 +14,6 @@ import com.atguigu.bean.Blue;
  * 		在BeanFactory标准初始化之后调用，来定制和修改BeanFactory的内容；
  * 		所有的bean定义已经保存加载到beanFactory，但是bean的实例还未创建
  * 
- * 
  * BeanFactoryPostProcessor原理:
  * 1)、ioc容器创建对象
  * 2)、invokeBeanFactoryPostProcessors(beanFactory);

@@ -26,7 +26,6 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
  * 		@Bean
  * 		public PlatformTransactionManager transactionManager()
  * 
- * 
  * 原理：
  * 1）、@EnableTransactionManagement
  * 			利用TransactionManagementConfigurationSelector给容器中会导入组件
@@ -53,7 +52,6 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
  * 							3）、执行目标方法
  * 								如果异常，获取到事务管理器，利用事务管理回滚操作；
  * 								如果正常，利用事务管理器，提交事务
- * 			
  */
 @EnableTransactionManagement
 @ComponentScan("com.atguigu.tx")

@@ -11,6 +11,7 @@ public class Person {
 
 	@Value("张三")
 	private String name;
+
 	@Value("#{20-2}")
 	private Integer age;
 
@@ -49,7 +50,6 @@ public class Person {
 
 	public Person() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

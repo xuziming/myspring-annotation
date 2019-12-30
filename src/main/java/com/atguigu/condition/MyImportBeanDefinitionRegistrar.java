@@ -17,8 +17,7 @@ public class MyImportBeanDefinitionRegistrar implements ImportBeanDefinitionRegi
 	 */
 	@Override
 	public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
-		
-		boolean definition = registry.containsBeanDefinition("com.atguigu.bean.Red");
+		boolean definition  = registry.containsBeanDefinition("com.atguigu.bean.Red");
 		boolean definition2 = registry.containsBeanDefinition("com.atguigu.bean.Blue");
 		if(definition && definition2){
 			//指定Bean定义信息；（Bean的类型，Bean。。。）

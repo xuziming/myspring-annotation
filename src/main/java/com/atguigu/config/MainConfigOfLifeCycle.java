@@ -60,10 +60,10 @@ import com.atguigu.bean.Car;
 @ComponentScan("com.atguigu.bean")
 @Configuration
 public class MainConfigOfLifeCycle {
-	
-	//@Scope("prototype")
-	@Bean(initMethod="init",destroyMethod="detory")
-	public Car car(){
+
+	// @Scope("prototype")
+	@Bean(initMethod = "init", destroyMethod = "detory")
+	public Car car() {
 		return new Car();
 	}
 

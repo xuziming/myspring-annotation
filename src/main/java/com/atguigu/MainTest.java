@@ -1,6 +1,5 @@
 package com.atguigu;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.atguigu.bean.Person;
@@ -13,15 +12,16 @@ public class MainTest {
 //		Person bean = (Person) applicationContext.getBean("person");
 //		System.out.println(bean);
 
-		@SuppressWarnings("resource")
-		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig.class);
-		Person bean = applicationContext.getBean(Person.class);
-		System.out.println(bean);
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MainConfig.class);
+		Person person = ctx.getBean(Person.class);
+		System.out.println(person);
 
-		String[] namesForType = applicationContext.getBeanNamesForType(Person.class);
+		String[] namesForType = ctx.getBeanNamesForType(Person.class);
 		for (String name : namesForType) {
 			System.out.println(name);
 		}
+
+		ctx.close();// 关闭资源
 	}
 
 }

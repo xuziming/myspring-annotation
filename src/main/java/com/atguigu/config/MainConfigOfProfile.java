@@ -27,27 +27,25 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
  * 2）、写在配置类上，只有是指定的环境的时候，整个配置类里面的所有配置才能开始生效
  * 3）、没有标注环境标识的bean在，任何环境下都是加载的；
  */
-
 @PropertySource("classpath:/dbconfig.properties")
 @Configuration
-public class MainConfigOfProfile implements EmbeddedValueResolverAware{
-	
+public class MainConfigOfProfile implements EmbeddedValueResolverAware {
+
 	@Value("${db.user}")
 	private String user;
-	
+
 	private StringValueResolver valueResolver;
-	
-	private String  driverClass;
-	
-	
+
+	private String driverClass;
+
 	@Bean
-	public Yellow yellow(){
+	public Yellow yellow() {
 		return new Yellow();
 	}
-	
+
 	@Profile("test")
 	@Bean("testDataSource")
-	public DataSource dataSourceTest(@Value("${db.password}")String pwd) throws Exception{
+	public DataSource dataSourceTest(@Value("${db.password}") String pwd) throws Exception {
 		ComboPooledDataSource dataSource = new ComboPooledDataSource();
 		dataSource.setUser(user);
 		dataSource.setPassword(pwd);
@@ -55,11 +53,10 @@ public class MainConfigOfProfile implements EmbeddedValueResolverAware{
 		dataSource.setDriverClass(driverClass);
 		return dataSource;
 	}
-	
-	
+
 	@Profile("dev")
 	@Bean("devDataSource")
-	public DataSource dataSourceDev(@Value("${db.password}")String pwd) throws Exception{
+	public DataSource dataSourceDev(@Value("${db.password}") String pwd) throws Exception {
 		ComboPooledDataSource dataSource = new ComboPooledDataSource();
 		dataSource.setUser(user);
 		dataSource.setPassword(pwd);
@@ -67,22 +64,21 @@ public class MainConfigOfProfile implements EmbeddedValueResolverAware{
 		dataSource.setDriverClass(driverClass);
 		return dataSource;
 	}
-	
+
 	@Profile("prod")
 	@Bean("prodDataSource")
-	public DataSource dataSourceProd(@Value("${db.password}")String pwd) throws Exception{
+	public DataSource dataSourceProd(@Value("${db.password}") String pwd) throws Exception {
 		ComboPooledDataSource dataSource = new ComboPooledDataSource();
 		dataSource.setUser(user);
 		dataSource.setPassword(pwd);
 		dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/scw_0515");
-		
+
 		dataSource.setDriverClass(driverClass);
 		return dataSource;
 	}
 
 	@Override
 	public void setEmbeddedValueResolver(StringValueResolver resolver) {
-		// TODO Auto-generated method stub
 		this.valueResolver = resolver;
 		driverClass = valueResolver.resolveStringValue("${db.driverClass}");
 	}
